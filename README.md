@@ -1,55 +1,32 @@
-# Burn-In Screening QA Dashboard
+Burn-In Screening QA Dashboard
 
-Streamlit dashboard matching the project brief's "Dashboard UI Views":
-Module A Inspector, Module B Forecast Visualizer, and an Explainability panel,
-plus a full sortable/downloadable results table.
+Interactive Streamlit dashboard for AI-Driven Anomaly Detection in Component Burn-In & Screening — a working prototype built for Smart India Hackathon 2026, Problem Statement 26170 (ISRO / Department of Space).
 
-## 1. Generate the data
+Component burn-in testing stresses electronic parts under extreme conditions to catch latent defects before they reach a satellite or launch vehicle. A defective part can still pass its absolute datasheet limits and slip through — the real signal is that it behaves differently from the rest of its own manufacturing lot, or drifts in a way that predicts failure later in its life. This dashboard visualizes both of those checks for a QA engineer.
 
-Run `module_a_and_b_mosfet_real_data.ipynb` in Colab (or locally) end to end.
-The last two cells save and download three files:
+What it does
 
-- `module_a_results.csv`
-- `module_b_results.csv`
-- `all_curves.csv`
+The prototype has two detection modules feeding one dashboard:
 
-Put all three inside this folder's `data/` subfolder (replacing the
-placeholder text file there).
+Module A — Dynamic Outlier Detector Flags components that are anomalous relative to the population they were tested with, not against a fixed threshold. Combines per-lot Z-scores and IQR bounds (simple, explainable checks) with an Isolation Forest (catches multi-parameter anomalies a single-parameter check would miss). Each component gets a risk score, a NORMAL / WATCH / CRITICAL status, and a plain-language explanation.
 
-## 2. Install dependencies
+Module B — Time-Series Drift Predictor Looks only at a component's early readings and predicts where its signal will end up later, so a likely failure can be flagged for early rejection before the full burn-in cycle finishes — the whole point being to catch problems without waiting out the entire test.
 
-```
-pip install -r requirements.txt
-```
+Dashboard
 
-## 3. Run it
+Module A — Outlier Inspector: population scatter plot with anomalies highlighted, plus the selected component's own signal curve.
+Module B — Forecast Visualizer: the model's early-window input, the actual late-stage outcome, and what it predicted, side by side.
+Explainability: risk score breakdown, plain-language reasoning, and a Module A / Module B agreement check.
+Full Results Table: every component, sortable, with a CSV export.
+Data
 
-```
-streamlit run app.py
-```
+Built and validated on real NASA MOSFET Thermal Overstress Aging data (component degradation measured as Rds(on) = Vds / Id over time), as a public stand-in for the proprietary ISRO burn-in dataset described in the problem statement. See module_a_and_b_mosfet_real_data.ipynb for the full pipeline — from raw .mat files to the three CSVs this dashboard reads.
 
-This opens the dashboard in your browser at `http://localhost:8501`. Use the
-sidebar to filter by status (NORMAL / WATCH / CRITICAL) and pick a component
-to inspect across all three tabs.
-
-## Running from Colab instead of your own machine
-
-If you'd rather not install Python locally, you can run the dashboard from
-Colab itself:
-
-1. Upload `app.py`, `requirements.txt`, and the `data/` folder (with your
-   three CSVs) into your Colab session's file storage.
-2. In a Colab cell:
-   ```
-   !pip install -q streamlit plotly
-   !npm install -q localtunnel
-   !streamlit run app.py &>/content/logs.txt &
-   !npx localtunnel --port 8501
-   ```
-3. Click the URL localtunnel prints. It will ask for a "tunnel password" --
-   run `!curl https://loca.lt/mytunnelpassword` in another cell and paste
-   that value in.
-
-The local `streamlit run` route (steps 1-3 above) is simpler and is what
-you'll want for a hackathon demo -- do that first and only use the Colab
-route if you don't have Python available on the machine you're demoing from.
+Project structure
+├── app.py                  # the dashboard
+├── requirements.txt
+├── data/
+│   ├── module_a_results.csv
+│   ├── module_b_results.csv
+│   └── all_curves.csv
+└── module_a_and_b_mosfet_real_data.ipynb   # generates the three CSVs above
