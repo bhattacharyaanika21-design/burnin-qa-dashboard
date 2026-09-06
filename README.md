@@ -32,18 +32,5 @@ Project structure
 │   ├── module_b_results.csv
 │   └── all_curves.csv
 └── module_a_and_b_mosfet_real_data.ipynb   # generates the three CSVs above
-Setup
-Generate the data: run module_a_and_b_mosfet_real_data.ipynb in Colab (or locally) end to end. Its last cells save and download module_a_results.csv, module_b_results.csv, and all_curves.csv.
-Put all three files in the data/ folder here.
-Install dependencies:
-   pip install -r requirements.txt
-Run it:
-   streamlit run app.py
 
-Opens automatically at http://localhost:8501.
 
-Running from Colab instead of your own machine
-!pip install -q streamlit plotly
-!npm install -q localtunnel
-!streamlit run app.py &>/content/logs.txt &
-!npx localtunnel --port 8501
