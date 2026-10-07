@@ -1,6 +1,6 @@
 Burn-In Screening QA Dashboard
 
-Interactive Streamlit dashboard for AI-Driven Anomaly Detection in Component Burn-In & Screening — a working prototype built for Smart India Hackathon 2026, Problem Statement 26170 (ISRO / Department of Space).
+Interactive Streamlit dashboard for AI-Driven Anomaly Detection in Component Burn-In & Screening — a working prototype built for Smart India Hackathon 2026, Problem Statement 26170 (ISRO / Department of Space).  
 
 Component burn-in testing stresses electronic parts under extreme conditions to catch latent defects before they reach a satellite or launch vehicle. A defective part can still pass its absolute datasheet limits and slip through — the real signal is that it behaves differently from the rest of its own manufacturing lot, or drifts in a way that predicts failure later in its life. This dashboard visualizes both of those checks for a QA engineer.
 
@@ -8,7 +8,7 @@ What it does
 
 The prototype has two detection modules feeding one dashboard:
 
-Module A — Dynamic Outlier Detector Flags components that are anomalous relative to the population they were tested with, not against a fixed threshold. Combines per-lot Z-scores and IQR bounds (simple, explainable checks) with an Isolation Forest (catches multi-parameter anomalies a single-parameter check would miss). Each component gets a risk score, a NORMAL / WATCH / CRITICAL status, and a plain-language explanation.
+Module A — Dynamic Outlier Detector Flags components that are anomalous relative to the population they were tested with, not against a fixed threshold. Combines per-lot Z-scores and IQR bounds (simple, explainable checks) with an Isolation Forest (catches multi-parameter anomalies a single-parameter check would miss). Each component gets a risk score, a NORMAL / WATCH / CRITICAL status, and a plain-language explanation.    
 
 Module B — Time-Series Drift Predictor Looks only at a component's early readings and predicts where its signal will end up later, so a likely failure can be flagged for early rejection before the full burn-in cycle finishes — the whole point being to catch problems without waiting out the entire test.
 
