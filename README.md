@@ -1,8 +1,8 @@
 Burn-In Screening QA Dashboard
 
 Interactive Streamlit dashboard for AI-Driven Anomaly Detection in Component Burn-In & Screening — a working prototype built for Smart India Hackathon 2026, Problem Statement 26170 (ISRO / Department of Space).  
-
-Component burn-in testing stresses electronic parts under extreme conditions to catch latent defects before they reach a satellite or launch vehicle. A defective part can still pass its absolute datasheet limits and slip through — the real signal is that it behaves differently from the rest of its own manufacturing lot, or drifts in a way that predicts failure later in its life. This dashboard visualizes both of those checks for a QA engineer.
+                                                                                                
+Component burn-in testing stresses electronic parts under extreme conditions to catch latent defects before they reach a satellite or launch vehicle. A defective part can still pass its absolute datasheet limits and slip through — the real signal is that it behaves differently from the rest of its own manufacturing lot, or drifts in a way that predicts failure later in its life. This dashboard visualizes both of those checks for a QA engineer.           
 
 What it does
 
