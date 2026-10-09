@@ -2,7 +2,7 @@
 ISRO Burn-In Screening -- QA Dashboard
 
 Reads the CSVs produced by the Module A + Module B notebook and gives a QA
-engineer three views, matching the project brief's "Dashboard UI Views":
+engineer three views, matching the project brief's "Dashboard UI Views":   
 
   1. Module A Inspector   -- population scatter with anomalies highlighted,
                               plus the selected device's own curve.
@@ -12,16 +12,16 @@ engineer three views, matching the project brief's "Dashboard UI Views":
                               plus the numeric breakdown behind the risk score.
 
 Expects three files in ./data/ :
-  - module_a_results.csv
+  - module_a_results.csv            
   - module_b_results.csv
   - all_curves.csv   (long format: component, time, signal)
 """
 
-import pandas as pd
+import pandas as pd         
 import numpy as np
-import streamlit as st
-import plotly.graph_objects as go
-import plotly.express as px
+import streamlit as st           
+import plotly.graph_objects as go                  
+import plotly.express as px         
 
 st.set_page_config(page_title="Burn-In Screening QA Dashboard", layout="wide")
 
