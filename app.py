@@ -5,7 +5,7 @@ Reads the CSVs produced by the Module A + Module B notebook and gives a QA
 engineer three views, matching the project brief's "Dashboard UI Views":   
 
   1. Module A Inspector   -- population scatter with anomalies highlighted,
-                              plus the selected device's own curve.
+                              plus the selected device's own curve.           
   2. Module B Forecast Visualizer -- observed early behavior vs. actual and
                               predicted late behavior for the selected device.
   3. Explainability panel -- why a device was flagged, in plain language,
